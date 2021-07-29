@@ -1,7 +1,9 @@
 package com.moshenskyi.covidtracker.presentation.country_list
 
 import android.graphics.Color
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.animation.Easing
@@ -62,6 +64,15 @@ class CountryDetailsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
         pieData.setValueTextColor(Color.WHITE)
         testChart.data = pieData
         testChart.invalidate()
+    }
+
+    companion object {
+        fun from(parent: ViewGroup): CountryDetailsViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val item = layoutInflater.inflate(R.layout.country_item_outter, parent, false)
+
+            return CountryDetailsViewHolder(item)
+        }
     }
 
 }

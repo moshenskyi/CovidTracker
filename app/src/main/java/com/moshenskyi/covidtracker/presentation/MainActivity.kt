@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getCountriesInfo()
         viewModel.infoLiveData.observe(this, {
             // TODO: 7/18/21 Check if empty
-            adapter.setItems(it)
+            adapter.submitList(it)
         })
 //        getStr
     }

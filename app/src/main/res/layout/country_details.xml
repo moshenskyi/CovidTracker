@@ -53,18 +53,16 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_double"
         android:text="@string/illness_title"
-        android:visibility="gone"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test_coverage_chart" />
+        app:layout_constraintTop_toBottomOf="@+id/vaccination_chart" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/illness_chart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_margin="@dimen/margin_double"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

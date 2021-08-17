@@ -1,2 +1,5 @@
 rootProject.name = "CovidTracker"
 include ':app'
+include ':feature-covid-data'
+include ':core'
+include ':core-android'

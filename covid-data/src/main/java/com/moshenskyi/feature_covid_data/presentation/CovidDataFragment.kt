@@ -30,20 +30,14 @@ class CovidDataFragment : Fragment(R.layout.fragment_covid_data) {
 
     private fun initRecycler(view: View) {
         val countryRecyclerView = view.findViewById<RecyclerView>(R.id.country_list)
-        countryRecyclerView.layoutManager = LinearLayoutManager(
-            activity,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
-        countryRecyclerView.adapter = listAdapter
 
-       /* with(countryRecyclerView) {
+        with(countryRecyclerView) {
             layoutManager = LinearLayoutManager(
                 activity,
                 LinearLayoutManager.VERTICAL,
                 false
             )
             adapter = listAdapter
-        }*/
+        }
     }
 }

@@ -112,6 +112,7 @@ fun LineDataSet.setColorSettings() {
     fillAlpha = FILL_ALPHA
 }
 
+// TODO: Check if not more than LABEL_COUNT
 fun Map<String, Int>.toDataSet(): List<Entry> {
     val dataSet = mutableListOf<Entry>()
 

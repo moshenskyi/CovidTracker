@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -53,5 +54,9 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
 
-    implementation project(path: ':covid-data')
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation project(':covid-data')
+    implementation project(':auth')
+    implementation 'com.google.firebase:firebase-common-ktx:20.0.0'
 }

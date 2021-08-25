@@ -1,0 +1,5 @@
+<resources>
+    <string name="vaccination_chart_text">Графік вакцинації:</string>
+    <string name="illness_title">Графік захворюваності:</string>
+    <string name="tests_coverage">Покриття тестами:</string>
+</resources>

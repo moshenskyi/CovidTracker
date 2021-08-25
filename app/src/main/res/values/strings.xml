@@ -1,6 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CovidTracker</string>
-    <string name="vaccination_chart_text">Графік вакцинації:</string>
-    <string name="illness_title">Графік захворюваності:</string>
-    <string name="tests_coverage">Покриття тестами:</string>
 </resources>

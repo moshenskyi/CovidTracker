@@ -1,5 +1,6 @@
 object DefaultDependencies {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    const val gradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
 }
 
 // Android

@@ -1,4 +1,3 @@
-
 import com.android.build.gradle.BaseExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -13,7 +12,6 @@ android {
     buildTypes {
         getByName(BuildTypes.RELEASE) {
             minifyEnabled(true)
-            isShrinkResources = true
         }
 
         getByName(BuildTypes.DEBUG) {

@@ -3,16 +3,13 @@ plugins {
     kotlin("android")
     id("com.google.gms.google-services")
     `android-kotlin-convention`
+    id("workplaces.sdk-versions")
 }
 
 android {
-    compileSdkVersion(30)
-    buildToolsVersion = "30.0.3"
 
     defaultConfig {
         applicationId = "com.moshenskyi.covidtracker"
-        minSdkVersion(21)
-        targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
 

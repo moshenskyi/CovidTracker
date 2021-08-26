@@ -14,6 +14,15 @@ buildscript {
     }
 }
 
+plugins {
+    id("workplaces.root-project")
+}
+
+workplaces {
+    minSdk.set(21)
+    targetSdk.set(30)
+}
+
 allprojects {
     repositories {
         google()

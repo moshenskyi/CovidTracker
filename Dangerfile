@@ -1,5 +1,3 @@
-danger.import_plugin("Danger/Plugins/*.rb")
-
 # Sometimes it's a README fix, or something like that - which isn't relevant for
 # including in a project's CHANGELOG for example
 declared_trivial = github.pr_title.include? "#trivial"
@@ -13,12 +11,6 @@ warn("Big PR") if git.lines_of_code > 500
 # Don't let testing shortcuts get into master by accident
 fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
 fail("fit left in tests") if `grep -r fit specs/ `.length > 1
-
-lint_modules = [
-    "app",
-    "auth",
-    "covid_data"
-]
 
 # This section processes each of the JUnit report XML files.
 ###########################################
@@ -35,23 +27,14 @@ end
 #                   LINT                  #
 ###########################################
 
-# lint_dir = "**/reports/lint-results.xml"
-# Dir[lint_dir].each do |file_name|
-#  android_lint.skip_gradle_task = true
-#  android_lint.filtering = true
-#  android_lint.report_file = file_name
-#  android_lint.lint
-# end
-
-lint_reports = lint_modules.map do |module_name|
-    Danger::LintReport.new(
-        name: "#{module_name}",
-        xml_path: "#{module_name}/build/reports/lint-results.xml",
-        html_path: "#{module_name}/build/reports/lint-results.html"
-    )
+lint_dir = "**/reports/lint-results.xml"
+Dir[lint_dir].each do |file_name|
+  android_lint.skip_gradle_task = true
+  android_lint.filtering = true
+  android_lint.report_file = file_name
+  message << file_name
+  android_lint.lint
 end
-
-message << lint.markdown(reports: lint_reports, build_url: build_url)
 
 ###########################################
 #               Checkstyle                #

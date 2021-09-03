@@ -13,13 +13,20 @@ fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
 fail("fit left in tests") if `grep -r fit specs/ `.length > 1
 
 # This section processes each of the JUnit report XML files.
+###########################################
+#                  JUnit                  #
+###########################################
+
 junit_tests_dir = "**/test-results/**/*.xml"
 Dir[junit_tests_dir].each do |file_name|
   junit.parse file_name
   junit.report
 end
 
-# Lint
+###########################################
+#                   LINT                  #
+###########################################
+
 lint_dir = "**/reports/lint-results.xml"
 Dir[lint_dir].each do |file_name|
   android_lint.skip_gradle_task = true
@@ -28,7 +35,10 @@ Dir[lint_dir].each do |file_name|
   android_lint.lint
 end
 
-# Checkstyle
+###########################################
+#               Checkstyle                #
+###########################################
+
 checkstyle_dir = "**/checkstyle/checkstyle.xml"
 Dir[checkstyle_dir].each do |file_name|
   checkstyle_format.base_path = file_name

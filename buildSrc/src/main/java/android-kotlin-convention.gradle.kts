@@ -9,6 +9,7 @@ android {
 
     lintOptions {
         xmlReport = true
+        htmlReport = true
     }
 
     buildTypes {

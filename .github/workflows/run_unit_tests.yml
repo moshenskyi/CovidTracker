@@ -19,20 +19,17 @@ jobs:
     steps:
     - name: git checkout
     - uses: actions/checkout@v2
-    
     - name: Setup Ruby
     - uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.6'
-        
+        ruby-version: '2.6' 
     - name: Cache gems
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
         restore-keys: |
-          ${{ runner.os }}-gems-
-          
+          ${{ runner.os }}-gems-      
     - name: danger action
     - uses: MeilCli/danger-action@v5
       with:

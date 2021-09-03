@@ -17,16 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name  == 'pull_request' # if only run pull request when multiple trigger workflow
     steps:
+    - name: git checkout
     - uses: actions/checkout@v2
+    
+    - name: Setup Ruby
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.6'
+        
+    - name: Cache gems
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile') }} # change your gemfile path
         restore-keys: |
           ${{ runner.os }}-gems-
+          
+    - name: danger action
     - uses: MeilCli/danger-action@v5
       with:
         plugins_file: 'Gemfile'

@@ -26,8 +26,8 @@ end
 ###########################################
 #                  KtLint                  #
 ###########################################
-checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report "app/build/reports/ktlint/lint-results.xml"
+# checkstyle_format.base_path = Dir.pwd
+# checkstyle_format.report "app/build/reports/lint-results.xml"
 
 ###########################################
 #                   LINT                  #
@@ -46,7 +46,7 @@ end
 #               Checkstyle                #
 ###########################################
 
-checkstyle_dir = "**/checkstyle/checkstyle.xml"
+checkstyle_dir = "**/build/reports/ktlint/*.xml"
 Dir[checkstyle_dir].each do |file_name|
   checkstyle_format.base_path = file_name
   checkstyle_format.report file_name

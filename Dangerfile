@@ -17,7 +17,7 @@ fail("fit left in tests") if `grep -r fit specs/ `.length > 1
 #                  JUnit                  #
 ###########################################
 
-junit_tests_dir = "**/test-results/**/*.xml"
+junit_tests_dir = "**/build/test-results/**/*.xml"
 Dir[junit_tests_dir].each do |file_name|
   junit.parse file_name
   junit.report

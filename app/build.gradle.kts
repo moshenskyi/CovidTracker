@@ -34,7 +34,7 @@ dependencies {
     // Chart
     implementation(Other.charts)
 
-    //LifeCycle
+    // LifeCycle
     implementation(Lifecycle.lifecycleCommon)
     implementation(Lifecycle.lifecycleExtensions)
 

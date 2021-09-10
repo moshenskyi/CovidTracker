@@ -24,6 +24,12 @@ Dir[junit_tests_dir].each do |file_name|
 end
 
 ###########################################
+#                  KtLint                  #
+###########################################
+checkstyle_format.base_path = Dir.pwd
+checkstyle_format.report "app/build/reports/ktlint/lint-results.xml"
+
+###########################################
 #                   LINT                  #
 ###########################################
 

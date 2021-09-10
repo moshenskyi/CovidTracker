@@ -1,12 +1,15 @@
 import com.android.build.gradle.BaseExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-// android
 android {
-
     defaultConfig {
         proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
             "proguard-rules.pro")
+    }
+
+    lintOptions {
+        xmlReport = true
+        htmlReport = true
     }
 
     buildTypes {

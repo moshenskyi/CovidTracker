@@ -33,7 +33,7 @@ jobs:
     - name: Run unit tests
       run: ./gradlew test
     - name: Run linter
-      run: ./gradlew lint
+      run: ./gradlew runKtlint
     - name: Bundle install
       env:
         DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}

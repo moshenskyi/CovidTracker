@@ -13,5 +13,4 @@ interface CovidApi {
 
     @GET("v3/covid-19/vaccine/coverage/countries?lastdays=30&fullData=false")
     suspend fun getVaccinationCapacity(): List<VaccineCapacityInfoItem>
-
 }

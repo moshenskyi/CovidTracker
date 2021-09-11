@@ -16,5 +16,4 @@ class CovidRepositoryImpl : CovidRepository {
     override suspend fun getVaccinationCapacity(): Flow<List<VaccineCapacityInfoItem>> {
         return flowOf(api.getVaccinationCapacity())
     }
-
 }

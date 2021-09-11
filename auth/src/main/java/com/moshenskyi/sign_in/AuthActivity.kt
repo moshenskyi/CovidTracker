@@ -77,7 +77,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
     }
 
     companion object {
-        const val LOGGED_USER_NAME = "logged_user_name";
-        const val LOGGED_USER_EMAIL = "logged_user_email";
+        const val LOGGED_USER_NAME = "logged_user_name"
+        const val LOGGED_USER_EMAIL = "logged_user_email"
     }
 }

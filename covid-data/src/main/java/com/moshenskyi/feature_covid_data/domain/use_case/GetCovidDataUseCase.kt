@@ -3,9 +3,11 @@ package com.moshenskyi.feature_covid_data.domain.use_case
 import com.moshenskyi.feature_covid_data.domain.CovidRepository
 import com.moshenskyi.feature_covid_data.domain.model.CovidInfoEntity
 import com.moshenskyi.feature_covid_data.domain.model.map
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.withContext
 
 class GetCovidDataUseCase(
     private val repository: CovidRepository,
@@ -23,5 +25,4 @@ class GetCovidDataUseCase(
                 map(country, vaccine)
             }
         }
-
 }

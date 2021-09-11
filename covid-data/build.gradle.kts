@@ -33,7 +33,7 @@ dependencies {
     // Chart
     implementation(Other.charts)
 
-    //Retrofit
+    // Retrofit
     implementation(Retrofit.retrofit)
     implementation(Retrofit.retrofitConverter)
     implementation(Retrofit.gson)

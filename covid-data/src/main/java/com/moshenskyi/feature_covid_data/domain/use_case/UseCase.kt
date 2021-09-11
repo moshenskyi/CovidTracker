@@ -6,9 +6,8 @@ interface UseCase<in Params, out Result> where Result : Any {
 
     @WorkerThread
     suspend fun execute(params: Params): Result
-
 }
 
 interface Parameter
 
-class None: Parameter
+class None : Parameter

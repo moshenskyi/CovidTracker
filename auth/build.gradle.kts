@@ -39,5 +39,4 @@ dependencies {
     implementation(Firebase.googleAuthPlayService)
 
     implementation(Other.timber)
-
 }

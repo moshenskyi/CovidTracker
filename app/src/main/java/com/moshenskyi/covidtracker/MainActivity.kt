@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 }
             }
 
-
         lifecycleScope.launchWhenCreated {
             loginLauncher?.launch(Intent(this@MainActivity, AuthActivity::class.java))
         }

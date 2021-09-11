@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class CovidViewModel: ViewModel() {
+class CovidViewModel : ViewModel() {
     private val repository = CovidRepositoryImpl()
     private val useCase = GetCovidDataUseCase(repository, Dispatchers.IO)
 
@@ -23,7 +23,5 @@ class CovidViewModel: ViewModel() {
         useCase.execute(None()).collect {
             _info.value = it
         }
-
     }
-
 }

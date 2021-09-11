@@ -7,7 +7,7 @@ object RetrofitBuilder {
     internal val api: CovidApi
 
     init {
-        val retrofit =  Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

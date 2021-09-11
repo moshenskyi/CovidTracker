@@ -82,7 +82,7 @@ private fun createDataSet(testsCount: Int, population: Int): PieDataSet {
     val testsEntry = PieEntry(testsCount.toFloat(), TESTS_LABEL)
     val populationEntry = PieEntry(population.toFloat(), POPULATION_LABEL)
 
-    return PieDataSet(listOf(testsEntry, populationEntry), EMPTY_STRING). apply {
+    return PieDataSet(listOf(testsEntry, populationEntry), EMPTY_STRING).apply {
         setColors(BRANDING_COLOR, ACCENT_COLOR)
         form = Legend.LegendForm.LINE
         sliceSpace = SLICE_OFFSET_SPACE

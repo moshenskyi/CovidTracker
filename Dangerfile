@@ -27,19 +27,18 @@ end
 #                   LINT                  #
 ###########################################
 
-lint_dir = "**/reports/lint-results.xml"
+lint_dir = "**/build/reports/*.xml"
 Dir[lint_dir].each do |file_name|
   android_lint.skip_gradle_task = true
   android_lint.filtering = true
   android_lint.report_file = file_name
   android_lint.severity = "Error"
-  android_lint.lint(inline_mode: true)
+  android_lint.lint
 end
 
 ###########################################
 #               Checkstyle                #
 ###########################################
-
 checkstyle_dir = "**/build/reports/ktlint/*.xml"
 Dir[checkstyle_dir].each do |file_name|
   checkstyle_format.base_path = file_name

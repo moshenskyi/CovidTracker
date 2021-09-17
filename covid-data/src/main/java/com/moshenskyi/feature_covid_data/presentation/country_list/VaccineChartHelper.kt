@@ -81,7 +81,6 @@ private fun initXAxis(
     valueFormatter = DayValueFormatter(vaccineCapacityChart.data)
 }
 
-
 // TODO: 8/1/21 Rearrange
 private fun setData(vaccineCapacityChart: LineChart, timeline: Map<String, Int>?) {
     timeline?.toDataSet()?.let {

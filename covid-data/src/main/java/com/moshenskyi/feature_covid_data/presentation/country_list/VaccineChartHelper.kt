@@ -26,7 +26,7 @@ private const val LINE_WIDTH = 1.8F
 private const val VALUE_TEXT_SIZE = 9F
 private const val CIRCLE_RADIUS = 4F
 
-fun initVaccinationChart(vaccineCapacityChart: LineChart, timeline: Map<String, Int>?) {
+fun initVaccinationChart(vaccineCapacityChart: LineChart, timeline: Map<String, Long>?) {
     with(vaccineCapacityChart) {
         setViewPortOffsets(NO_OFFSET, NO_OFFSET, NO_OFFSET, NO_OFFSET)
         setBackgroundColor(BACKGROUND_COLOR)
@@ -82,7 +82,7 @@ private fun initXAxis(
 }
 
 // TODO: 8/1/21 Rearrange
-private fun setData(vaccineCapacityChart: LineChart, timeline: Map<String, Int>?) {
+private fun setData(vaccineCapacityChart: LineChart, timeline: Map<String, Long>?) {
     timeline?.toDataSet()?.let {
         val set = LineDataSet(it, "Timelines").apply {
             mode = LineDataSet.Mode.CUBIC_BEZIER
@@ -112,7 +112,7 @@ fun LineDataSet.setColorSettings() {
 }
 
 // TODO: Check if not more than LABEL_COUNT
-fun Map<String, Int>.toDataSet(): List<Entry> {
+fun Map<String, Long>.toDataSet(): List<Entry> {
     val dataSet = mutableListOf<Entry>()
 
     var counter = 0F

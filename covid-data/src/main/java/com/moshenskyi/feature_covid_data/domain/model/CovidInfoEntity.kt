@@ -6,5 +6,6 @@ data class CovidInfoEntity(
     val testCount: Int,
     val country: String,
     val population: Int,
-    val vaccineCapacityInfoItem: VaccineCapacityInfoItem?
+    val vaccineCapacityInfoItem: VaccineCapacityInfoItem?,
+    var expanded: Boolean
 )

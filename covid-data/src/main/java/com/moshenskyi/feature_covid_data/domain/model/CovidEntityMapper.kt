@@ -14,7 +14,8 @@ fun map(
                 item.tests,
                 item.country,
                 item.population,
-                element
+                element,
+                false
             )
         )
     }

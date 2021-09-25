@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CovidRepository {
 
-    suspend fun getCountriesInfo(): Flow<List<CountryRecordsItem>>
+	suspend fun getCountriesInfo(): Flow<List<CountryRecordsItem>>
 
-    suspend fun getVaccinationCapacity(): Flow<List<VaccineCapacityInfoItem>>
+	suspend fun getVaccinationCapacity(): Flow<List<VaccineCapacityInfoItem>>
 }

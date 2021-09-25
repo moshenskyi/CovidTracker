@@ -13,26 +13,26 @@ import com.moshenskyi.feature_covid_data.presentation.CovidDataFragment
 import com.moshenskyi.sign_in.AuthActivity
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-    private var loginLauncher: ActivityResultLauncher<Intent>? = null
+	private var loginLauncher: ActivityResultLauncher<Intent>? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-        loginLauncher =
-            registerForActivityResult(StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    // TODO: 8/23/21 Save name and email
-                }
-            }
+		loginLauncher =
+			registerForActivityResult(StartActivityForResult()) { result ->
+				if (result.resultCode == Activity.RESULT_OK) {
+					// TODO: 8/23/21 Save name and email
+				}
+			}
 
-        lifecycleScope.launchWhenCreated {
-            loginLauncher?.launch(Intent(this@MainActivity, AuthActivity::class.java))
-        }
+		lifecycleScope.launchWhenCreated {
+			loginLauncher?.launch(Intent(this@MainActivity, AuthActivity::class.java))
+		}
 
-        if (supportFragmentManager.findFragmentById(R.id.fragment_container) == null) {
-            supportFragmentManager.commit {
-                add<CovidDataFragment>(R.id.fragment_container, "covid_data")
-            }
-        }
-    }
+		if (supportFragmentManager.findFragmentById(R.id.fragment_container) == null) {
+			supportFragmentManager.commit {
+				add<CovidDataFragment>(R.id.fragment_container, "covid_data")
+			}
+		}
+	}
 }

@@ -13,15 +13,15 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CovidViewModel : ViewModel() {
-    private val repository = CovidRepositoryImpl()
-    private val useCase = GetCovidDataUseCase(repository, Dispatchers.IO)
+	private val repository = CovidRepositoryImpl()
+	private val useCase = GetCovidDataUseCase(repository, Dispatchers.IO)
 
-    private val _info = MutableLiveData<List<CovidInfoEntity>>()
-    val infoLiveData: LiveData<List<CovidInfoEntity>> = _info
+	private val _info = MutableLiveData<List<CovidInfoEntity>>()
+	val infoLiveData: LiveData<List<CovidInfoEntity>> = _info
 
-    fun getCountriesInfo() = viewModelScope.launch {
-        useCase.execute(None()).collect {
-            _info.value = it
-        }
-    }
+	fun getCountriesInfo() = viewModelScope.launch {
+		useCase.execute(None()).collect {
+			_info.value = it
+		}
+	}
 }

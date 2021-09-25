@@ -10,34 +10,34 @@ import com.moshenskyi.feature_covid_data.R
 import com.moshenskyi.feature_covid_data.presentation.country_list.CountryListAdapter
 
 class CovidDataFragment : Fragment(R.layout.fragment_covid_data) {
-    private val listAdapter = CountryListAdapter()
+	private val listAdapter = CountryListAdapter()
 
-    private val viewModel by viewModels<CovidViewModel> { defaultViewModelProviderFactory }
+	private val viewModel by viewModels<CovidViewModel> { defaultViewModelProviderFactory }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
 
-        initRecycler(view)
+		initRecycler(view)
 
-        with(viewModel) {
-            getCountriesInfo()
-            infoLiveData.observe(viewLifecycleOwner) { data ->
-                // TODO: 7/18/21 Check if empty
-                listAdapter.submitList(data)
-            }
-        }
-    }
+		with(viewModel) {
+			getCountriesInfo()
+			infoLiveData.observe(viewLifecycleOwner) { data ->
+				// TODO: 7/18/21 Check if empty
+				listAdapter.submitList(data)
+			}
+		}
+	}
 
-    private fun initRecycler(view: View) {
-        val countryRecyclerView = view.findViewById<RecyclerView>(R.id.country_list)
+	private fun initRecycler(view: View) {
+		val countryRecyclerView = view.findViewById<RecyclerView>(R.id.country_list)
 
-        with(countryRecyclerView) {
-            layoutManager = LinearLayoutManager(
-                activity,
-                LinearLayoutManager.VERTICAL,
-                false
-            )
-            adapter = listAdapter
-        }
-    }
+		with(countryRecyclerView) {
+			layoutManager = LinearLayoutManager(
+				activity,
+				LinearLayoutManager.VERTICAL,
+				false
+			)
+			adapter = listAdapter
+		}
+	}
 }

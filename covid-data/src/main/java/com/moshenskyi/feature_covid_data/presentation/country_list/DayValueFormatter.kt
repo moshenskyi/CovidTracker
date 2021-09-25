@@ -6,8 +6,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 
 class DayValueFormatter(private val dataSet: LineData) : ValueFormatter() {
 
-    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-        val entryForIndex = dataSet.getDataSetByIndex(0).getEntryForIndex(value.toInt())
-        return entryForIndex.data.toString()
-    }
+	override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+		val entryForIndex = dataSet.getDataSetByIndex(0).getEntryForIndex(value.toInt())
+		return entryForIndex.data.toString()
+	}
 }

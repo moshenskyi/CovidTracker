@@ -41,50 +41,50 @@ private val BRANDING_COLOR = Color.rgb(104, 241, 175)
 // endregion
 
 fun initTestChart(testChart: PieChart, testsCount: Int, population: Int) {
-    val dataSet = createDataSet(testsCount, population)
-    val pieData = createPieData(dataSet, testChart)
+	val dataSet = createDataSet(testsCount, population)
+	val pieData = createPieData(dataSet, testChart)
 
-    with(testChart) {
-        setUsePercentValues(true)
-        setHoleColor(Color.WHITE)
+	with(testChart) {
+		setUsePercentValues(true)
+		setHoleColor(Color.WHITE)
 
-        isHighlightPerTapEnabled = true
+		isHighlightPerTapEnabled = true
 
-        holeRadius = HOLE_RADIUS
-        rotationAngle = ROTATION_ANGLE
-        minAngleForSlices = MIN_ANGLE_FOR_SLICES
-        isRotationEnabled = true
+		holeRadius = HOLE_RADIUS
+		rotationAngle = ROTATION_ANGLE
+		minAngleForSlices = MIN_ANGLE_FOR_SLICES
+		isRotationEnabled = true
 
-        dragDecelerationFrictionCoef = DECELERATION_COEFFICIENT
-        animateY(ANIMATION_SPEED, Easing.EaseInOutQuad)
+		dragDecelerationFrictionCoef = DECELERATION_COEFFICIENT
+		animateY(ANIMATION_SPEED, Easing.EaseInOutQuad)
 
-        setDrawCenterText(false)
-        setDrawEntryLabels(false)
-        description = Description().apply { text = EMPTY_STRING }
+		setDrawCenterText(false)
+		setDrawEntryLabels(false)
+		description = Description().apply { text = EMPTY_STRING }
 
-        data = pieData
-        invalidate()
-    }
+		data = pieData
+		invalidate()
+	}
 }
 
 private fun createPieData(
-    dataSet: PieDataSet,
-    testChart: PieChart
+	dataSet: PieDataSet,
+	testChart: PieChart
 ): PieData {
-    val pieData = PieData(dataSet)
-    pieData.setValueFormatter(PercentFormatter(testChart))
-    pieData.setValueTextSize(VALUE_TEXT_SIZE)
-    pieData.setValueTextColor(Color.WHITE)
-    return pieData
+	val pieData = PieData(dataSet)
+	pieData.setValueFormatter(PercentFormatter(testChart))
+	pieData.setValueTextSize(VALUE_TEXT_SIZE)
+	pieData.setValueTextColor(Color.WHITE)
+	return pieData
 }
 
 private fun createDataSet(testsCount: Int, population: Int): PieDataSet {
-    val testsEntry = PieEntry(testsCount.toFloat(), TESTS_LABEL)
-    val populationEntry = PieEntry(population.toFloat(), POPULATION_LABEL)
+	val testsEntry = PieEntry(testsCount.toFloat(), TESTS_LABEL)
+	val populationEntry = PieEntry(population.toFloat(), POPULATION_LABEL)
 
-    return PieDataSet(listOf(testsEntry, populationEntry), EMPTY_STRING).apply {
-        setColors(BRANDING_COLOR, ACCENT_COLOR)
-        form = Legend.LegendForm.LINE
-        sliceSpace = SLICE_OFFSET_SPACE
-    }
+	return PieDataSet(listOf(testsEntry, populationEntry), EMPTY_STRING).apply {
+		setColors(BRANDING_COLOR, ACCENT_COLOR)
+		form = Legend.LegendForm.LINE
+		sliceSpace = SLICE_OFFSET_SPACE
+	}
 }

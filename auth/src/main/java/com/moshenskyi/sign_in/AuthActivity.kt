@@ -15,69 +15,69 @@ import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
 class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
-    private var signInButton: SignInButton? = null
-    private lateinit var auth: FirebaseAuth
+	private var signInButton: SignInButton? = null
+	private lateinit var auth: FirebaseAuth
 
-    private var loginLauncher: ActivityResultLauncher<Intent>? = null
+	private var loginLauncher: ActivityResultLauncher<Intent>? = null
 
-    private var signInIntent: Intent? = null
+	private var signInIntent: Intent? = null
 
-    private val signInHelper = SignInHelper()
+	private val signInHelper = SignInHelper()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
 
-        auth = Firebase.auth
+		auth = Firebase.auth
 
-        initUi()
+		initUi()
 
-        signInIntent = signInHelper.getSignInIntent(this)
+		signInIntent = signInHelper.getSignInIntent(this)
 
-        loginLauncher = registerForActivityResult(StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                authenticate(result)
-            }
-        }
-    }
+		loginLauncher = registerForActivityResult(StartActivityForResult()) { result ->
+			if (result.resultCode == Activity.RESULT_OK) {
+				authenticate(result)
+			}
+		}
+	}
 
-    private fun authenticate(result: ActivityResult) {
-        signInHelper.onSignedIn(this, result.data, {
-            Timber.d("signInWithCredential:success")
-            val user = auth.currentUser
-            updateUI(user)
-        }, { exception ->
-            Timber.w(exception, "signInWithCredential:failure")
-            updateUI(null)
-        })
-    }
+	private fun authenticate(result: ActivityResult) {
+		signInHelper.onSignedIn(this, result.data, {
+			Timber.d("signInWithCredential:success")
+			val user = auth.currentUser
+			updateUI(user)
+		}, { exception ->
+			Timber.w(exception, "signInWithCredential:failure")
+			updateUI(null)
+		})
+	}
 
-    private fun initUi() {
-        signInButton = findViewById(R.id.sign_in__google_button)
-        signInButton?.setOnClickListener {
-            loginLauncher?.launch(signInIntent)
-        }
-    }
+	private fun initUi() {
+		signInButton = findViewById(R.id.sign_in__google_button)
+		signInButton?.setOnClickListener {
+			loginLauncher?.launch(signInIntent)
+		}
+	}
 
-    override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
+	override fun onStart() {
+		super.onStart()
+		// Check if user is signed in (non-null) and update UI accordingly.
+		val currentUser = auth.currentUser
+		updateUI(currentUser)
+	}
 
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
-            val resultIntent = Intent()
-                .putExtra(LOGGED_USER_NAME, currentUser.displayName)
-                .putExtra(LOGGED_USER_EMAIL, currentUser.email)
+	private fun updateUI(currentUser: FirebaseUser?) {
+		if (currentUser != null) {
+			val resultIntent = Intent()
+				.putExtra(LOGGED_USER_NAME, currentUser.displayName)
+				.putExtra(LOGGED_USER_EMAIL, currentUser.email)
 
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
-        }
-    }
+			setResult(Activity.RESULT_OK, resultIntent)
+			finish()
+		}
+	}
 
-    companion object {
-        const val LOGGED_USER_NAME = "logged_user_name"
-        const val LOGGED_USER_EMAIL = "logged_user_email"
-    }
+	companion object {
+		const val LOGGED_USER_NAME = "logged_user_name"
+		const val LOGGED_USER_EMAIL = "logged_user_email"
+	}
 }

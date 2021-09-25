@@ -9,8 +9,8 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.moshenskyi.feature_covid_data.R
 import com.moshenskyi.feature_covid_data.domain.model.CovidInfoEntity
-import com.moshenskyi.feature_covid_data.presentation.country_list.initTestChart
-import com.moshenskyi.feature_covid_data.presentation.country_list.initVaccinationChart
+import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.chart_helper.initTestChart
+import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.chart_helper.initVaccinationChart
 
 class CovidViewHolder(
     private val onExpanded: (Int) -> Unit,
@@ -22,6 +22,14 @@ class CovidViewHolder(
     private val vaccinationChart: LineChart = itemView.findViewById(R.id.vaccination_chart)
 
     private val countryData: ViewGroup = itemView.findViewById(R.id.country_data)
+
+    private var expanded = false
+
+    private val animationHelper = AnimationHelper(
+        countryData,
+        { countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expanded, 0) },
+        { countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_hidden, 0) }
+    )
 
     fun bind(viewData: CovidInfoEntity) {
         countryTitle.text = viewData.country
@@ -37,12 +45,17 @@ class CovidViewHolder(
     }
 
     fun expand(expanded: Boolean) {
+        if (this.expanded != expanded) {
+            this.expanded = expanded
+            animateExpand(expanded)
+        }
+    }
+
+    private fun animateExpand(expanded: Boolean) {
         if (expanded) {
-            countryData.visibility = View.VISIBLE
-            countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_hidden, 0)
+            animationHelper.showDetails()
         } else {
-            countryData.visibility = View.GONE
-            countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expanded, 0)
+            animationHelper.hideDetails()
         }
     }
 

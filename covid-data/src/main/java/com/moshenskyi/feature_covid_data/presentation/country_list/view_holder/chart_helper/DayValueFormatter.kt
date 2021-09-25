@@ -1,4 +1,4 @@
-package com.moshenskyi.feature_covid_data.presentation.country_list
+package com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.chart_helper
 
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.LineData

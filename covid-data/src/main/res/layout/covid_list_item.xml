@@ -9,7 +9,7 @@
         android:id="@+id/country_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_background"
+        android:background="@drawable/country_item_data_background"
         tools:text="Ukraine"
         android:textColor="@color/black"
         android:textSize="@dimen/list_title_size"
@@ -17,13 +17,15 @@
         android:padding="@dimen/margin_double"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableRightCompat="@drawable/ic_hidden" />
 
     <include
         android:id="@+id/country_data"
-        layout="@layout/country_details"
+        layout="@layout/chart_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_marginEnd="@dimen/margin_double"
         android:layout_marginStart="@dimen/margin_double"
         android:layout_marginBottom="@dimen/margin_double"

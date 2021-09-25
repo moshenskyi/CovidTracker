@@ -24,5 +24,5 @@ data class CountryRecordsItem(
 	val todayDeaths: Int,
 	val todayRecovered: Int,
 	val undefined: Double,
-	val updated: Long
+	val updated: Long,
 )

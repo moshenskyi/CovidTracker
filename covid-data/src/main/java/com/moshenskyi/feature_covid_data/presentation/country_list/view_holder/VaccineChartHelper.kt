@@ -8,6 +8,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IFillFormatter
+import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.DayValueFormatter
 
 // TODO: 8/1/21 Rearrange
 private const val MAX_HIGHLIGHT_DISTANCE = 300F

@@ -69,7 +69,7 @@ fun initTestChart(testChart: PieChart, testsCount: Int, population: Int) {
 
 private fun createPieData(
 	dataSet: PieDataSet,
-	testChart: PieChart,
+	testChart: PieChart
 ): PieData {
 	val pieData = PieData(dataSet)
 	pieData.setValueFormatter(PercentFormatter(testChart))

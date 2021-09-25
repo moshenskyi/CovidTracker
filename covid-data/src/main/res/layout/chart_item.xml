@@ -36,7 +36,7 @@
         android:padding="@dimen/margin_double"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/test_coverage_chart" />
+        app:layout_constraintTop_toBottomOf="@id/test_coverage_chart"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/vaccination_chart"

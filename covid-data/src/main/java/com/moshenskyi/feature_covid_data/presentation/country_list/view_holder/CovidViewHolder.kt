@@ -14,7 +14,7 @@ import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.c
 
 class CovidViewHolder(
 	private val onExpanded: (Int) -> Unit,
-	itemView: View,
+	itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
 
 	private val countryTitle: TextView = itemView.findViewById(R.id.country_title)

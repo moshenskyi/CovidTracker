@@ -7,23 +7,23 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
-	internal val api: CovidApi
+    internal val api: CovidApi
 
-	init {
-		val retrofit = Retrofit.Builder()
-			.baseUrl(BASE_URL)
-			.addConverterFactory(GsonConverterFactory.create())
-			.client(getClient())
-			.build()
+    init {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(getClient())
+            .build()
 
-		api = retrofit.create(CovidApi::class.java)
-	}
+        api = retrofit.create(CovidApi::class.java)
+    }
 
-	private fun getClient(): OkHttpClient {
-		val logging = HttpLoggingInterceptor().apply { setLevel(Level.BODY) }
+    private fun getClient(): OkHttpClient {
+        val logging = HttpLoggingInterceptor().apply { setLevel(Level.BODY) }
 
-		return OkHttpClient.Builder()
-			.addInterceptor(logging)
-			.build()
-	}
+        return OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+    }
 }

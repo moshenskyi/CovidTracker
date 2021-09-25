@@ -3,8 +3,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 android {
     defaultConfig {
-        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
-            "proguard-rules.pro")
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
     }
 
     lintOptions {
@@ -32,7 +34,6 @@ tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 fun Project.android(configure: BaseExtension.() -> Unit) {

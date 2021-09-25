@@ -5,17 +5,17 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 
 class SdkVersionPlugin : Plugin<Project> {
-    override fun apply(target: Project) {
-        target.configureSdk()
-    }
+	override fun apply(target: Project) {
+		target.configureSdk()
+	}
 }
 
 private fun Project.configureSdk() = configure<BaseExtension> {
-    val config = rootProject.extensions.getByType<WorkplacesExtension>()
+	val config = rootProject.extensions.getByType<WorkplacesExtension>()
 
-    defaultConfig {
-        minSdkVersion(config.minSdk.get())
-        targetSdkVersion(config.targetSdk.get())
-        compileSdkVersion(config.compileSdk.get())
-    }
+	defaultConfig {
+		minSdkVersion(config.minSdk.get())
+		targetSdkVersion(config.targetSdk.get())
+		compileSdkVersion(config.compileSdk.get())
+	}
 }

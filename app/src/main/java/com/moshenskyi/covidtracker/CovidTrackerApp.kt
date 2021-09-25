@@ -6,13 +6,13 @@ import timber.log.Timber
 
 class CovidTrackerApp : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
+	override fun onCreate() {
+		super.onCreate()
 
-        FirebaseApp.initializeApp(this)
+		FirebaseApp.initializeApp(this)
 
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
-    }
+		if (BuildConfig.DEBUG) {
+			Timber.plant(Timber.DebugTree())
+		}
+	}
 }

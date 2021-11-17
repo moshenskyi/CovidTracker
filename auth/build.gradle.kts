@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+
+	buildFeatures {
+		viewBinding = true
+	}
+
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

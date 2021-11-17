@@ -1,24 +1,31 @@
 package com.moshenskyi.feature_covid_data.presentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.moshenskyi.feature_covid_data.R
+import com.moshenskyi.feature_covid_data.databinding.FragmentCovidDataBinding
 import com.moshenskyi.feature_covid_data.presentation.country_list.CountryListAdapter
 import com.moshenskyi.feature_covid_data.presentation.view_model.CovidViewModel
 
-class CovidDataFragment : Fragment(R.layout.fragment_covid_data) {
+class CovidDataFragment : Fragment() {
 	private val viewModel by viewModels<CovidViewModel> { defaultViewModelProviderFactory }
 
 	private var listAdapter: CountryListAdapter? = null
 
+	private var binding: FragmentCovidDataBinding? = null
+
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+		binding = FragmentCovidDataBinding.inflate(layoutInflater)
+		return binding?.root
+	}
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-
-		initRecycler(view)
+		initRecycler()
 
 		with(viewModel) {
 			getCountriesInfo()
@@ -29,11 +36,11 @@ class CovidDataFragment : Fragment(R.layout.fragment_covid_data) {
 		}
 	}
 
-	private fun initRecycler(view: View) {
-		val countryRecyclerView = view.findViewById<RecyclerView>(R.id.country_list)
+	private fun initRecycler() {
+		val countryRecyclerView = binding?.countryList
 		listAdapter = CountryListAdapter(viewModel::onExpanded)
 
-		with(countryRecyclerView) {
+		countryRecyclerView?.run {
 			layoutManager = LinearLayoutManager(
 				activity,
 				LinearLayoutManager.VERTICAL,
@@ -42,5 +49,11 @@ class CovidDataFragment : Fragment(R.layout.fragment_covid_data) {
 			setHasFixedSize(true)
 			adapter = listAdapter
 		}
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+
+		binding = null
 	}
 }

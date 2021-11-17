@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.moshenskyi.sign_in.databinding.ActivityAuthBinding
 import timber.log.Timber
 
 class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
@@ -24,8 +25,12 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
 
 	private val signInHelper = SignInHelper()
 
+	private var binding: ActivityAuthBinding? = null
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		binding = ActivityAuthBinding.inflate(layoutInflater)
+		setContentView(binding?.root)
 
 		auth = Firebase.auth
 
@@ -52,7 +57,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
 	}
 
 	private fun initUi() {
-		signInButton = findViewById(R.id.sign_in__google_button)
+		signInButton = binding?.signInGoogleButton
 		signInButton?.setOnClickListener {
 			loginLauncher?.launch(signInIntent)
 		}
@@ -74,6 +79,12 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
 			setResult(Activity.RESULT_OK, resultIntent)
 			finish()
 		}
+	}
+
+	override fun onDestroy() {
+		super.onDestroy()
+
+		binding = null
 	}
 
 	companion object {

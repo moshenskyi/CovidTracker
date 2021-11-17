@@ -1,5 +1,3 @@
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -11,7 +9,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
         classpath("com.google.gms:google-services:4.3.10")
         classpath("com.android.tools.lint:lint:30.0.2")
-        classpath("org.jlleitschuh.gradle:ktlint-gradle:9.2.1")
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.1")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -22,29 +20,26 @@ plugins {
 }
 
 subprojects {
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    apply(plugin = "io.gitlab.arturbosch.detekt")
 
     repositories {
         mavenCentral()
     }
 
-    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
-        version.set("0.42.1")
-        android.set(true)
+    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        buildUponDefaultConfig = true
+        allRules = false
+		config = files("$rootDir/config/detekt/detekt.yml")
+        baseline = file("$rootDir/config/detekt/baseline.xml")
 
-        outputToConsole.set(true)
-        outputColorName.set("RED")
-
-        ignoreFailures.set(true)
-
-        reporters {
-            reporter(ReporterType.CHECKSTYLE)
+        reports {
+            xml.enabled = true
         }
     }
 
     tasks.register("runChecksForDanger") {
         group = "Reporting"
-        dependsOn("ktlintCheck")
+        dependsOn("detekt")
         dependsOn(":app:lint")
         dependsOn(":auth:lint")
         dependsOn(":core-android:lint")
@@ -55,6 +50,12 @@ subprojects {
         val lintFile = File("${project.rootDir}/build/reports/lint")
         if (!lintFile.exists()) lintFile.mkdirs()
     }
+
+	// Kotlin DSL
+	tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+		// Target version of the generated JVM bytecode. It is used for type resolution.
+		jvmTarget = "1.8"
+	}
 }
 
 workplaces {

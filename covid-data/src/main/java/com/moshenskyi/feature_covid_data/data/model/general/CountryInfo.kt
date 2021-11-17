@@ -1,7 +1,10 @@
 package com.moshenskyi.feature_covid_data.data.model.general
 
+import com.google.gson.annotations.SerializedName
+
 data class CountryInfo(
-	val _id: Int,
+	@SerializedName("_id")
+	val id: Int,
 	val flag: String,
 	val iso2: String,
 	val iso3: String,

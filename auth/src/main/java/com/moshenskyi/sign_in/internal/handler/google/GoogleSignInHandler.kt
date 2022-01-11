@@ -1,4 +1,4 @@
-package com.moshenskyi.sign_in.sign_in_handler.google
+package com.moshenskyi.sign_in.internal.handler.google
 
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
@@ -7,11 +7,11 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.moshenskyi.sign_in.sign_in_handler.SignInHandler
-import com.moshenskyi.sign_in.sign_in_handler.SignInParams
+import com.moshenskyi.sign_in.internal.handler.SignInHandler
+import com.moshenskyi.sign_in.internal.handler.SignInParams
 import timber.log.Timber
 
-class GoogleSignInHandler : SignInHandler<GoogleSignInParams> {
+internal class GoogleSignInHandler : SignInHandler<GoogleSignInParams> {
 
 	override fun onSignedIn(params: GoogleSignInParams) {
 		val task = GoogleSignIn.getSignedInAccountFromIntent(params.resultIntent)
@@ -33,7 +33,7 @@ class GoogleSignInHandler : SignInHandler<GoogleSignInParams> {
 			.addOnCompleteListener(params.context) { task ->
 				if (task.isSuccessful) {
 					// Sign in success, update UI with the signed-in user's information
-					params.resultHandler.onSuccess
+					params.resultHandler.onSuccess()
 				} else {
 					// If sign in fails, display a message to the user.
 					params.resultHandler.onError(task.exception)
@@ -42,8 +42,8 @@ class GoogleSignInHandler : SignInHandler<GoogleSignInParams> {
 	}
 }
 
-data class GoogleSignInParams(
+internal data class GoogleSignInParams(
 	val context: FragmentActivity,
 	val resultIntent: Intent?,
-	val resultHandler: GoogleResultHandler,
+	val resultHandler: GoogleResultHandler
 ) : SignInParams

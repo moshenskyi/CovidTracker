@@ -1,27 +1,27 @@
 package com.moshenskyi.feature_covid_data.presentation.country_list.view_holder
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.moshenskyi.feature_covid_data.R
+import com.moshenskyi.feature_covid_data.databinding.CovidListItemBinding
 import com.moshenskyi.feature_covid_data.domain.model.CovidInfoEntity
 import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.chart_helper.initTestChart
 import com.moshenskyi.feature_covid_data.presentation.country_list.view_holder.chart_helper.initVaccinationChart
 
 class CovidViewHolder(
 	private val onExpanded: (Int) -> Unit,
-	itemView: View
-) : RecyclerView.ViewHolder(itemView) {
+	private val binding: CovidListItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-	private val countryTitle: TextView = itemView.findViewById(R.id.country_title)
-	private val testChart: PieChart = itemView.findViewById(R.id.test_coverage_chart)
-	private val vaccinationChart: LineChart = itemView.findViewById(R.id.vaccination_chart)
+	private val countryTitle: TextView = binding.countryTitle
+	private val testChart: PieChart = binding.countryData.testCoverageChart
+	private val vaccinationChart: LineChart = binding.countryData.vaccinationChart
 
-	private val countryData: ViewGroup = itemView.findViewById(R.id.country_data)
+	private val countryData: ViewGroup = binding.countryData.root
 
 	private var expanded = false
 
@@ -61,10 +61,8 @@ class CovidViewHolder(
 
 	companion object {
 		fun from(parent: ViewGroup, onExpanded: (Int) -> Unit): CovidViewHolder {
-			val layoutInflater = LayoutInflater.from(parent.context)
-			val item = layoutInflater.inflate(R.layout.covid_list_item, parent, false)
-
-			return CovidViewHolder(onExpanded, item)
+			val binding = CovidListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+			return CovidViewHolder(onExpanded, binding)
 		}
 	}
 }

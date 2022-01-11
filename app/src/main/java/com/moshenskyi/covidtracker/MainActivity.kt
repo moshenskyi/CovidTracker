@@ -2,7 +2,6 @@ package com.moshenskyi.covidtracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.moshenskyi.feature_covid_data.covid_data.CovidDataRouterImpl
 import com.moshenskyi.feature_covid_data.routing.CovidDataRouterImpl
 import com.moshenskyi.sign_in.AuthRouterImpl
 

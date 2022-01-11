@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CovidViewModel : ViewModel() {
-	private val repository = CovidRepositoryImpl()
-	private val useCase = GetCovidDataUseCase(repository, Dispatchers.IO)
+	// TODO: 1/11/22 Inject in constructor
+	private val useCase = GetCovidDataUseCase(CovidRepositoryImpl(), Dispatchers.IO)
 
 	private val _info = MutableLiveData<List<CovidInfoEntity>?>()
 	val infoLiveData: LiveData<List<CovidInfoEntity>?> = _info
@@ -27,14 +27,7 @@ class CovidViewModel : ViewModel() {
 
 	fun onExpanded(position: Int) {
 		_info.value?.let { infoList ->
-			val data = mutableListOf<CovidInfoEntity>().apply { addAll(infoList) }
-			val viewData = data[position]
-			val newItem = viewData.copy(expanded = viewData.expanded.not())
-
-			data.removeAt(position)
-			newItem.let { data.add(position, it) }
-
-			_info.value = data
+			_info.value = handleExpansion(position, infoList)
 		}
 	}
 }

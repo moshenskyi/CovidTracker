@@ -81,6 +81,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
 		}
 	}
 
+
 	override fun onDestroy() {
 		super.onDestroy()
 

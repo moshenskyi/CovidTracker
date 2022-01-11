@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.moshenskyi.feature_covid_data.country_list.CountryListAdapter
 import com.moshenskyi.feature_covid_data.databinding.FragmentCovidDataBinding
+import com.moshenskyi.feature_covid_data.internal.CovidViewModel
+import com.moshenskyi.feature_covid_data.internal.country_list.CountryListAdapter
 
 class CovidDataFragment : Fragment() {
 	private val viewModel by viewModels<CovidViewModel> { defaultViewModelProviderFactory }

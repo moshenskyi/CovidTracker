@@ -1,8 +1,8 @@
 package com.moshenskyi.feature_covid_data.use_case
 
 import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
-import com.moshenskyi.feature_covid_data.domain_entity.CovidRepository
 import com.moshenskyi.feature_covid_data.domain_entity.map
+import com.moshenskyi.feature_covid_data.network.CovidRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

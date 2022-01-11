@@ -1,6 +1,5 @@
 package com.moshenskyi.feature_covid_data.network
 
-import com.moshenskyi.feature_covid_data.domain_entity.CovidRepository
 import com.moshenskyi.feature_covid_data.model.general.CountryRecordsItem
 import com.moshenskyi.feature_covid_data.model.vaccine.VaccineCapacityInfoItem
 import kotlinx.coroutines.flow.Flow

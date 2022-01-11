@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.moshenskyi.feature_covid_data.presentation.CovidDataFragment">
+    tools:context="com.moshenskyi.feature_covid_data.covid_data.CovidDataFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/country_list"

@@ -44,4 +44,6 @@ dependencies {
     implementation(Firebase.googleAuthPlayService)
 
     implementation(Other.timber)
+
+	implementation(project(":core-android"))
 }

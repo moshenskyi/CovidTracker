@@ -14,7 +14,7 @@ import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
 
 class CovidViewHolder(
 	private val onExpanded: (Int) -> Unit,
-	private val binding: CovidListItemBinding
+	private val binding: CovidListItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
 	private val countryTitle: TextView = binding.countryTitle
@@ -23,13 +23,13 @@ class CovidViewHolder(
 
 	private val countryData: ViewGroup = binding.countryData.root
 
-	private var expanded = false
-
 	private val animationHelper = ChartItemAnimationHelper(
 		countryData,
 		{ countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expanded, 0) },
 		{ countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_hidden, 0) }
 	)
+
+	private val animationController = AnimationController.withHelper(animationHelper)
 
 	fun bind(viewData: CovidInfoEntity) {
 		countryTitle.text = viewData.country
@@ -45,23 +45,16 @@ class CovidViewHolder(
 	}
 
 	fun expand(expanded: Boolean) {
-		if (this.expanded != expanded) {
-			this.expanded = expanded
-			animateExpand(expanded)
-		}
-	}
-
-	private fun animateExpand(expanded: Boolean) {
-		if (expanded) {
-			animationHelper.showDetails()
-		} else {
-			animationHelper.hideDetails()
-		}
+		animationController.expand(expanded)
 	}
 
 	companion object {
 		fun from(parent: ViewGroup, onExpanded: (Int) -> Unit): CovidViewHolder {
-			val binding = CovidListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+			val binding = CovidListItemBinding.inflate(
+				LayoutInflater.from(parent.context),
+				parent,
+				false
+			)
 			return CovidViewHolder(onExpanded, binding)
 		}
 	}

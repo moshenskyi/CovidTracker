@@ -25,7 +25,7 @@ class CovidViewHolder(
 
 	private var expanded = false
 
-	private val animationHelper = AnimationHelper(
+	private val animationHelper = ChartItemAnimationHelper(
 		countryData,
 		{ countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expanded, 0) },
 		{ countryTitle.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_hidden, 0) }

@@ -2,7 +2,7 @@ package com.moshenskyi.covidtracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.moshenskyi.feature_covid_data.presentation.CovidDataRouterImpl
+import com.moshenskyi.feature_covid_data.routing.CovidDataRouterImpl
 import com.moshenskyi.sign_in.AuthRouterImpl
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {

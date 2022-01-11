@@ -20,7 +20,8 @@ class CountryListAdapter(
         } else {
             val changed = payloads.last() as Boolean
             if (changed) {
-                holder.expand(getItem(position).expanded)
+				val item = getItem(position)
+				holder.expand(item.expanded)
             }
         }
     }

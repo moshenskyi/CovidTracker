@@ -2,7 +2,7 @@ package com.moshenskyi.feature_covid_data.covid_data
 
 import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
 
-fun handleExpansion(position: Int, infoList: List<CovidInfoEntity>): List<CovidInfoEntity> {
+internal fun handleExpansion(position: Int, infoList: List<CovidInfoEntity>): List<CovidInfoEntity> {
 	val data = infoList.toMutableList()
 
 	val viewData = data[position]

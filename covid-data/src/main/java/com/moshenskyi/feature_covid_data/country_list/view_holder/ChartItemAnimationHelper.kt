@@ -15,7 +15,7 @@ private const val ALPHA_INVISIBLE = 0F
 
 private const val ALPHA_PROPERTY = "alpha"
 
-class ChartItemAnimationHelper(private val container: ViewGroup, showAction: () -> Unit, hideAction: () -> Unit) {
+internal class ChartItemAnimationHelper(private val container: ViewGroup, showAction: () -> Unit, hideAction: () -> Unit) {
 	private val showAnimator = ObjectAnimator.ofFloat(container, ALPHA_PROPERTY, ALPHA_INVISIBLE, ALPHA_VISIBLE).apply {
 		duration = ANIMATION_DURATION
 		interpolator = AccelerateInterpolator()

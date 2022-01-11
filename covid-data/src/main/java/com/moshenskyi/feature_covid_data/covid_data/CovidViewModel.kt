@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class CovidViewModel : ViewModel() {
+internal class CovidViewModel : ViewModel() {
 	// TODO: 1/11/22 Inject in constructor
 	private val useCase = GetCovidDataUseCase(CovidRepositoryImpl(), Dispatchers.IO)
 

@@ -2,7 +2,7 @@ package com.moshenskyi.feature_covid_data.model.general
 
 import com.google.gson.annotations.SerializedName
 
-data class CountryInfo(
+internal data class CountryInfo(
 	@SerializedName("_id")
 	val id: Int,
 	val flag: String,

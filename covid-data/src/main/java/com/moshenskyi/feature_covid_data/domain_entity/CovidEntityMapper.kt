@@ -3,7 +3,7 @@ package com.moshenskyi.feature_covid_data.domain_entity
 import com.moshenskyi.feature_covid_data.model.general.CountryRecordsItem
 import com.moshenskyi.feature_covid_data.model.vaccine.VaccineCapacityInfoItem
 
-fun map(
+internal fun map(
 	countryInfo: List<CountryRecordsItem>,
 	vaccineCapacityInfo: List<VaccineCapacityInfoItem>,
 ): List<CovidInfoEntity> {

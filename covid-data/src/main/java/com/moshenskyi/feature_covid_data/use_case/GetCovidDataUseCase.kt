@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.withContext
 
-class GetCovidDataUseCase(
+internal class GetCovidDataUseCase(
 	private val repository: CovidRepository,
 	private val dispatcher: CoroutineDispatcher
 ) : UseCase<None, Flow<List<CovidInfoEntity>>> {

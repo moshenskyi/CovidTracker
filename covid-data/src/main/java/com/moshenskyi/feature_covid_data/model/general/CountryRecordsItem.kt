@@ -1,6 +1,6 @@
 package com.moshenskyi.feature_covid_data.model.general
 
-data class CountryRecordsItem(
+internal data class CountryRecordsItem(
 	val active: Int,
 	val activePerOneMillion: Double,
 	val cases: Int,

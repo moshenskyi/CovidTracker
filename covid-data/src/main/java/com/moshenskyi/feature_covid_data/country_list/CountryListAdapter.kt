@@ -6,7 +6,7 @@ import com.moshenskyi.feature_covid_data.country_list.diff_util.CovidDataDiffUti
 import com.moshenskyi.feature_covid_data.country_list.view_holder.CovidViewHolder
 import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
 
-class CountryListAdapter(
+internal class CountryListAdapter(
     private val onExpanded: (Int) -> Unit
 ) : ListAdapter<CovidInfoEntity, CovidViewHolder>(CovidDataDiffUtil()) {
 

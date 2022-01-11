@@ -5,7 +5,7 @@ import com.moshenskyi.feature_covid_data.model.vaccine.VaccineCapacityInfoItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class CovidRepositoryImpl : CovidRepository {
+internal class CovidRepositoryImpl : CovidRepository {
 	private val api = RetrofitBuilder.api
 
 	override suspend fun getCountriesInfo(): Flow<List<CountryRecordsItem>> {

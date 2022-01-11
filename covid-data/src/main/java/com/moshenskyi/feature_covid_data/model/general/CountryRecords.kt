@@ -1,3 +1,3 @@
 package com.moshenskyi.feature_covid_data.model.general
 
-class CountryRecords : ArrayList<CountryRecordsItem>()
+internal class CountryRecords : ArrayList<CountryRecordsItem>()

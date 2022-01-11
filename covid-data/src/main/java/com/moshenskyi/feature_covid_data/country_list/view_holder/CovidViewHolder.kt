@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.moshenskyi.feature_covid_data.R
-import com.moshenskyi.feature_covid_data.country_list.view_holder.chart_helper.initTestChart
 import com.moshenskyi.feature_covid_data.country_list.view_holder.chart_helper.initVaccinationChart
+import com.moshenskyi.feature_covid_data.country_list.view_holder.chart_helper.test_chart.TestChartHelper
 import com.moshenskyi.feature_covid_data.databinding.CovidListItemBinding
 import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
 
-class CovidViewHolder(
+internal class CovidViewHolder(
 	private val onExpanded: (Int) -> Unit,
-	private val binding: CovidListItemBinding,
+	binding: CovidListItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
 	private val countryTitle: TextView = binding.countryTitle
@@ -22,6 +22,8 @@ class CovidViewHolder(
 	private val vaccinationChart: LineChart = binding.countryData.vaccinationChart
 
 	private val countryData: ViewGroup = binding.countryData.root
+
+	private val testChartHelper = TestChartHelper()
 
 	private val animationHelper = ChartItemAnimationHelper(
 		countryData,
@@ -34,7 +36,7 @@ class CovidViewHolder(
 	fun bind(viewData: CovidInfoEntity) {
 		countryTitle.text = viewData.country
 
-		initTestChart(testChart, viewData.testCount, viewData.population)
+		testChartHelper.initTestChart(testChart, viewData.testCount, viewData.population)
 		initVaccinationChart(vaccinationChart, viewData.vaccineCapacityInfoItem?.timeline)
 
 		expand(viewData.expanded)

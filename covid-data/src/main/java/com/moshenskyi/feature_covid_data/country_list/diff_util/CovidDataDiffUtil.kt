@@ -3,7 +3,7 @@ package com.moshenskyi.feature_covid_data.country_list.diff_util
 import androidx.recyclerview.widget.DiffUtil
 import com.moshenskyi.feature_covid_data.domain_entity.CovidInfoEntity
 
-class CovidDataDiffUtil : DiffUtil.ItemCallback<CovidInfoEntity>() {
+internal class CovidDataDiffUtil : DiffUtil.ItemCallback<CovidInfoEntity>() {
 	override fun areItemsTheSame(oldItem: CovidInfoEntity, newItem: CovidInfoEntity): Boolean {
 		return oldItem.country == newItem.country
 	}

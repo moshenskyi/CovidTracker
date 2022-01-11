@@ -1,6 +1,6 @@
 package com.moshenskyi.feature_covid_data.country_list.view_holder
 
-class AnimationController private constructor(private val animationHelper: ChartItemAnimationHelper) {
+internal class AnimationController private constructor(private val animationHelper: ChartItemAnimationHelper) {
 	private var expanded = false
 
 	fun expand(expanded: Boolean) {

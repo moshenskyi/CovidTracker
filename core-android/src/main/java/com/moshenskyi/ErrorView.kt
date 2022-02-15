@@ -3,22 +3,21 @@ package com.moshenskyi
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.moshenskyi.core.ScreenState.Failure
 import com.moshenskyi.core_android.R
 
 class ErrorView @JvmOverloads constructor(
 	context: Context,
-	attrs: AttributeSet? = null
-): LinearLayout(context, attrs) {
+	attrs: AttributeSet? = null,
+) : LinearLayout(context, attrs) {
 
-	private var errorTextView: TextView? = null
+	internal var errorTextView: TextView? = null
+	internal var errorImageView: ImageView? = null
 
-	var errorText: String?
-		set(value) {
-			errorTextView?.text = value
-		}
-		get() = errorTextView?.text.toString()
+	private val errorAdapter = ErrorViewAdapter()
 
 	init {
 		inflate(context, R.layout.view_error, this)
@@ -31,6 +30,11 @@ class ErrorView @JvmOverloads constructor(
 		orientation = VERTICAL
 
 		errorTextView = findViewById(R.id.error_text)
+		errorImageView = findViewById(R.id.error_image)
+	}
+
+	fun <T : Any> setError(error: Failure<T>) {
+		errorAdapter.setError(this, error)
 	}
 
 

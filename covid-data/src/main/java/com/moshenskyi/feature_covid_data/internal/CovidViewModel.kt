@@ -25,7 +25,7 @@ internal class CovidViewModel : ViewModel() {
 		runCatching {
 			useCase.execute(None())
 		}.onFailure { error ->
-			_state.value = ScreenState.Failure(error.message)
+			_state.value = ScreenState.Failure(error.message, error)
 		}.onSuccess {
 			_state.value = ScreenState.Success(it)
 		}

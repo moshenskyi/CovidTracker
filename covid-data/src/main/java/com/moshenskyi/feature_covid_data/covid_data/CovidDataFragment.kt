@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.moshenskyi.core.ScreenState
+import com.moshenskyi.core.ScreenState.Failure
+import com.moshenskyi.core.ScreenState.Success
 import com.moshenskyi.feature_covid_data.databinding.FragmentCovidDataBinding
 import com.moshenskyi.feature_covid_data.internal.CovidViewModel
 import com.moshenskyi.feature_covid_data.internal.country_list.CountryListAdapter
@@ -38,11 +40,11 @@ class CovidDataFragment : Fragment() {
 
 	private fun handleScreenState(screenState: ScreenState<List<CovidInfoEntity>>) {
 		when (screenState) {
-			is ScreenState.Success -> {
+			is Success -> {
 				onListLoaded(screenState.result)
 			}
-			is ScreenState.Failure -> {
-				onListLoadingFailed(screenState.message)
+			is Failure -> {
+				onListLoadingFailed(screenState)
 			}
 			else -> {}
 		}
@@ -54,11 +56,11 @@ class CovidDataFragment : Fragment() {
 		listAdapter?.submitList(list)
 	}
 
-	private fun onListLoadingFailed(message: String?) {
+	private fun onListLoadingFailed(error: Failure<List<CovidInfoEntity>>) {
 		binding?.countryList?.isVisible = false
 		binding?.errorView?.run {
 			isVisible = true
-			errorText = message
+			setError(error)
 		}
 	}
 

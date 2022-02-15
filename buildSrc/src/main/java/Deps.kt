@@ -31,6 +31,7 @@ object Lifecycle {
 object Other {
 	const val charts = "com.github.PhilJay:MPAndroidChart:${Versions.charts}"
 	const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+	const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 }
 
 // Retrofit

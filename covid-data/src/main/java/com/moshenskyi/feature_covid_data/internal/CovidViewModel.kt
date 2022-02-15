@@ -39,4 +39,16 @@ internal class CovidViewModel : ViewModel() {
 			}
 		}
 	}
+
+	private fun List<CovidInfoEntity>.handleExpansion(position: Int): List<CovidInfoEntity> {
+		val data = this.toMutableList()
+
+		val viewData = data[position]
+		val newItem = viewData.copy(expanded = viewData.expanded.not())
+
+		data.removeAt(position)
+		newItem.let { data.add(position, it) }
+
+		return data
+	}
 }

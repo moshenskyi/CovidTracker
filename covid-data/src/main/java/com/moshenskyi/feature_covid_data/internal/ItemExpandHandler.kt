@@ -1,4 +1,4 @@
-package com.moshenskyi.feature_covid_data.covid_data
+package com.moshenskyi.feature_covid_data.internal
 
 import com.moshenskyi.feature_covid_data.internal.domain_entity.CovidInfoEntity
 

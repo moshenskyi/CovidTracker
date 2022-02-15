@@ -34,7 +34,8 @@ internal class CovidViewModel : ViewModel() {
 	fun onExpanded(position: Int) {
 		_state.value?.let { infoList ->
 			if (infoList is ScreenState.Success) {
-				_state.value = ScreenState.Success(handleExpansion(position, infoList.result))
+				val result = infoList.result
+				_state.value = ScreenState.Success(result.handleExpansion(position))
 			}
 		}
 	}

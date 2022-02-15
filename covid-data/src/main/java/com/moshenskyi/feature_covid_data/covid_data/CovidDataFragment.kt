@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.moshenskyi.core.ScreenState
@@ -38,9 +38,27 @@ class CovidDataFragment : Fragment() {
 
 	private fun handleScreenState(screenState: ScreenState<List<CovidInfoEntity>>) {
 		when (screenState) {
-			is ScreenState.Success -> listAdapter?.submitList(screenState.result)
-			is ScreenState.Failure -> Toast.makeText(activity, "ERROR", Toast.LENGTH_SHORT).show()
+			is ScreenState.Success -> {
+				onListLoaded(screenState.result)
+			}
+			is ScreenState.Failure -> {
+				onListLoadingFailed(screenState.message)
+			}
 			else -> {}
+		}
+	}
+
+	private fun onListLoaded(list: List<CovidInfoEntity>) {
+		binding?.countryList?.isVisible = true
+		binding?.errorView?.isVisible = false
+		listAdapter?.submitList(list)
+	}
+
+	private fun onListLoadingFailed(message: String?) {
+		binding?.countryList?.isVisible = false
+		binding?.errorView?.run {
+			isVisible = true
+			errorText = message
 		}
 	}
 

@@ -46,17 +46,22 @@ class CovidDataFragment : Fragment() {
 			is Failure -> {
 				onListLoadingFailed(screenState)
 			}
-			else -> {}
+			else -> {
+				binding?.loadingView?.isVisible = true
+				binding?.errorView?.isVisible = false
+			}
 		}
 	}
 
 	private fun onListLoaded(list: List<CovidInfoEntity>) {
+		binding?.loadingView?.isVisible = false
 		binding?.countryList?.isVisible = true
 		binding?.errorView?.isVisible = false
 		listAdapter?.submitList(list)
 	}
 
 	private fun onListLoadingFailed(error: Failure<List<CovidInfoEntity>>) {
+		binding?.loadingView?.isVisible = false
 		binding?.countryList?.isVisible = false
 		binding?.errorView?.run {
 			isVisible = true

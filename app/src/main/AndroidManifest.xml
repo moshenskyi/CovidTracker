@@ -14,7 +14,9 @@
         android:theme="@style/Theme.CovidTracker">
 
         <activity
-            android:name=".SplashScreenActivity">
+            android:name=".SplashScreenActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

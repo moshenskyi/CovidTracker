@@ -7,5 +7,5 @@
     app:lottie_fileName="splash_animation.json"
     app:lottie_autoPlay="true"
     app:lottie_repeatMode="restart"
-    app:lottie_repeatCount="3"
+    app:lottie_repeatCount="1"
     tools:context=".SplashScreenActivity"/>

@@ -15,8 +15,8 @@ import com.moshenskyi.feature_covid_data.R
 import com.moshenskyi.feature_covid_data.databinding.FragmentCovidDataBinding
 import com.moshenskyi.feature_covid_data.internal.CovidViewModel
 import com.moshenskyi.feature_covid_data.internal.country_list.CountryListAdapter
-import com.moshenskyi.feature_covid_data.internal.country_list.createItemDecoration
 import com.moshenskyi.feature_covid_data.internal.domain_entity.CovidInfoEntity
+import com.moshenskyi.utils.CustomizableDividerDecoration
 import com.moshenskyi.utils.DefaultLayoutManager
 
 class CovidDataFragment : Fragment() {
@@ -75,7 +75,7 @@ class CovidDataFragment : Fragment() {
 		countryRecyclerView?.run {
 			layoutManager = DefaultLayoutManager(activity)
 			addItemDecoration(
-				createItemDecoration(
+				CustomizableDividerDecoration(
 					requireActivity(),
 					LinearLayout.VERTICAL,
 					R.drawable.divider

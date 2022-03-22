@@ -17,4 +17,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 		covidDataRouter.openCovidData(supportFragmentManager, R.id.fragment_container)
 	}
+
+	override fun onBackPressed() {
+		if (onBackPressedDispatcher.hasEnabledCallbacks()) {
+			super.onBackPressed()
+		}
+	}
 }

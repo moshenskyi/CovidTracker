@@ -37,6 +37,7 @@ dependencies {
 
     // Chart
     implementation(Other.charts)
+    implementation(Other.lottie)
 
     // Retrofit
     implementation(Retrofit.retrofit)

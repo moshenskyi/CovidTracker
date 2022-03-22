@@ -21,6 +21,7 @@ object Versions {
 	// Other Third-party
 	const val timber = "5.0.1"
 	const val charts = "v3.1.0"
+	const val lottie = "4.2.1"
 
 	// Firebase
 	const val firebaseCommonKtx = "20.0.0"

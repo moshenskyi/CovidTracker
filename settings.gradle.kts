@@ -1,6 +1,9 @@
 rootProject.name = "CovidTracker"
-include(":app")
-include(":covid-data")
-include(":core")
-include(":core-android")
-include(":auth")
+include(":app", ":covid-data", ":core", ":core-android", ":auth")
+
+buildCache {
+	local {
+		directory = File(rootDir, "build-cache")
+		removeUnusedEntriesAfterDays = 30
+	}
+}

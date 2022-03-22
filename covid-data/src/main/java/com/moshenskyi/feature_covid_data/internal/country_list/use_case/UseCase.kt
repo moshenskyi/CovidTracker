@@ -10,4 +10,4 @@ internal interface UseCase<in Params, out Result> where Result : Any {
 
 internal interface Parameter
 
-internal class None : Parameter
+internal class NoParams : Parameter

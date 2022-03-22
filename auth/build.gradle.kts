@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+
+	buildFeatures {
+		viewBinding = true
+	}
+
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -39,4 +44,6 @@ dependencies {
     implementation(Firebase.googleAuthPlayService)
 
     implementation(Other.timber)
+
+	implementation(project(":core-android"))
 }

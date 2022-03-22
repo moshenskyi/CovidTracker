@@ -4,9 +4,14 @@ plugins {
     id("com.google.gms.google-services")
     `android-kotlin-convention`
     id("workplaces.sdk-versions")
+	id("kotlin-android")
 }
 
 android {
+
+	buildFeatures {
+		viewBinding = true
+	}
 
     defaultConfig {
         applicationId = "com.moshenskyi.covidtracker"
@@ -40,6 +45,7 @@ dependencies {
 
     // Logging
     implementation(Other.timber)
+	implementation(Other.lottie)
 
     // Firebase
     implementation(Firebase.firebaseBom)
@@ -47,4 +53,5 @@ dependencies {
 
     implementation(project(":covid-data"))
     implementation(project(":auth"))
+	implementation(project(":core-android"))
 }

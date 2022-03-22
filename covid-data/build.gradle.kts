@@ -6,6 +6,11 @@ plugins {
 }
 
 android {
+
+	buildFeatures {
+		viewBinding = true
+	}
+
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -32,6 +37,7 @@ dependencies {
 
     // Chart
     implementation(Other.charts)
+    implementation(Other.lottie)
 
     // Retrofit
     implementation(Retrofit.retrofit)

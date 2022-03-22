@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="list_item_border_color">#62AFFE</color>
+    <color name="list_item_arrow">#00468E</color>
     <color name="list_item_border_inner">#ECF3FB</color>
 </resources>

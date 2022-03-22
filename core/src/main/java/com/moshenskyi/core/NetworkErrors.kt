@@ -6,11 +6,11 @@ abstract class NetworkError(
 ) : Exception(message, cause)
 
 class ConnectionError(
-	message: String? = "An error occurred with connection to our servers",
+	message: String? = "An error occurred with connection to our servers. Please try again later.",
 	cause: Throwable? = null,
 ) : NetworkError(message, cause)
 
 class ServerError(
-	message: String? = "An error occurred on our side",
+	message: String? = "An error occurred on our side. Please try again later.",
 	cause: Throwable? = null,
 ) : NetworkError(message, cause)

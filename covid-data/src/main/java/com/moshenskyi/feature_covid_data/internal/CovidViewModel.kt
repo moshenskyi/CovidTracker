@@ -1,16 +1,19 @@
 package com.moshenskyi.feature_covid_data.internal
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moshenskyi.core.ScreenState
 import com.moshenskyi.feature_covid_data.internal.country_list.use_case.GetCovidDataUseCase
-import com.moshenskyi.feature_covid_data.internal.country_list.use_case.None
+import com.moshenskyi.feature_covid_data.internal.country_list.use_case.NoParams
 import com.moshenskyi.feature_covid_data.internal.domain_entity.CovidInfoEntity
 import com.moshenskyi.feature_covid_data.internal.network.CovidRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
+private const val TAG = "CovidViewModel"
 
 internal class CovidViewModel : ViewModel() {
 	// TODO: 1/11/22 Inject in constructor
@@ -20,10 +23,11 @@ internal class CovidViewModel : ViewModel() {
 	val state: LiveData<ScreenState<List<CovidInfoEntity>>> = _state
 
 	fun getCountriesInfo() = viewModelScope.launch {
+		Log.d(TAG, "getCountriesInfo: ${Thread.currentThread()}")
 		_state.value = ScreenState.Loading()
 
 		runCatching {
-			useCase.execute(None())
+			useCase.execute(NoParams())
 		}.onFailure { error ->
 			_state.value = ScreenState.Failure(error.message, error)
 		}.onSuccess {

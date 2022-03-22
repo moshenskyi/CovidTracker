@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.moshenskyi.core.ScreenState
 import com.moshenskyi.core.ScreenState.Failure
 import com.moshenskyi.core.ScreenState.Success
+import com.moshenskyi.feature_covid_data.R
 import com.moshenskyi.feature_covid_data.databinding.FragmentCovidDataBinding
 import com.moshenskyi.feature_covid_data.internal.CovidViewModel
 import com.moshenskyi.feature_covid_data.internal.country_list.CountryListAdapter
+import com.moshenskyi.feature_covid_data.internal.country_list.createItemDecoration
 import com.moshenskyi.feature_covid_data.internal.domain_entity.CovidInfoEntity
 import com.moshenskyi.utils.DefaultLayoutManager
 
@@ -40,12 +43,8 @@ class CovidDataFragment : Fragment() {
 
 	private fun handleScreenState(screenState: ScreenState<List<CovidInfoEntity>>) {
 		when (screenState) {
-			is Success -> {
-				onListLoaded(screenState.result)
-			}
-			is Failure -> {
-				onListLoadingFailed(screenState)
-			}
+			is Success -> onListLoaded(screenState.result)
+			is Failure -> onListLoadingFailed(screenState)
 			else -> {
 				binding?.loadingView?.isVisible = true
 				binding?.errorView?.isVisible = false
@@ -75,6 +74,13 @@ class CovidDataFragment : Fragment() {
 
 		countryRecyclerView?.run {
 			layoutManager = DefaultLayoutManager(activity)
+			addItemDecoration(
+				createItemDecoration(
+					requireActivity(),
+					LinearLayout.VERTICAL,
+					R.drawable.divider
+				)
+			)
 			setHasFixedSize(true)
 			adapter = listAdapter
 		}

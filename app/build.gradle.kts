@@ -54,4 +54,5 @@ dependencies {
     implementation(project(":covid-data"))
     implementation(project(":auth"))
 	implementation(project(":core-android"))
+	implementation(project(":profile"))
 }

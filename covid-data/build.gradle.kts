@@ -49,8 +49,6 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":core-android"))
 
-    // Tests
-
     // Test
     testImplementation(Tests.jUnit)
     androidTestImplementation(Tests.jUnitExtensions)

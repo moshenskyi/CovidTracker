@@ -4,19 +4,25 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.moshenskyi.covidtracker.databinding.ActivityMainBinding
 import com.moshenskyi.feature_covid_data.routing.CovidDataRouterImpl
 import com.moshenskyi.profile.ProfileActivity
 import com.moshenskyi.sign_in.AuthRouterImpl
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
 	private val authRouter = AuthRouterImpl()
 	private val covidDataRouter = CovidDataRouterImpl()
 
+	private var binding: ActivityMainBinding? = null
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		setSupportActionBar(findViewById(R.id.toolbar))
+		binding = ActivityMainBinding.inflate(layoutInflater)
+		setContentView(binding?.root)
+
+		setSupportActionBar(binding?.toolbar)
 
 		authRouter.openAuth(this)
 
@@ -40,5 +46,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 		if (onBackPressedDispatcher.hasEnabledCallbacks()) {
 			super.onBackPressed()
 		}
+	}
+
+	override fun onDestroy() {
+		super.onDestroy()
+		binding = null
 	}
 }

@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -26,16 +28,17 @@ subprojects {
         mavenCentral()
     }
 
-    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+    detekt {
         buildUponDefaultConfig = true
         allRules = false
 		config = files("$rootDir/config/detekt/detekt.yml")
-        baseline = file("$rootDir/config/detekt/baseline.xml")
-
-        reports {
-            xml.enabled = true
-        }
     }
+
+	tasks.withType<Detekt>().configureEach {
+		reports {
+			xml.required.set(true)
+		}
+	}
 
     tasks.register("runChecksForDanger") {
         group = "Reporting"
@@ -52,7 +55,7 @@ subprojects {
     }
 
 	// Kotlin DSL
-	tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+	tasks.withType<Detekt>().configureEach {
 		// Target version of the generated JVM bytecode. It is used for type resolution.
 		jvmTarget = "1.8"
 	}

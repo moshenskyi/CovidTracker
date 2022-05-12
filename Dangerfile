@@ -44,3 +44,14 @@ Dir[checkstyle_dir].each do |file_name|
   checkstyle_format.base_path = file_name
   checkstyle_format.report file_name
 end
+
+###########################################
+#                 Detekt                  #
+###########################################
+kotlin_detekt.severity = "warning"
+kotlin_detekt.gradle_task = "detektVerification"
+detekt_files = "**/build/reports/detekt/*.xml"
+
+Dir[detekt_files].each do |file_name|
+  kotlin_detekt.report_file = file_name
+  kotlin_detekt.detekt(inline_mode: true)

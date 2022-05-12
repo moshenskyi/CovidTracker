@@ -55,3 +55,4 @@ detekt_files = "**/build/reports/detekt/*.xml"
 Dir[detekt_files].each do |file_name|
   kotlin_detekt.report_file = file_name
   kotlin_detekt.detekt
+ end

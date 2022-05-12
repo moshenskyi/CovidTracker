@@ -29,7 +29,7 @@ subprojects {
     }
 
     detekt {
-        buildUponDefaultConfig = true
+        buildUponDefaultConfig = false
         allRules = false
 		config = files("$rootDir/config/detekt/detekt.yml")
     }

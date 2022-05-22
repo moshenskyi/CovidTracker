@@ -38,9 +38,5 @@ jobs:
       env:
         DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-          gem install danger
-          gem install danger-checkstyle_format
-          gem install danger-android_lint
-          gem install danger-junit
-          gem install danger-kotlin_detekt
-          danger
+          bundle install
+          bundle exec danger

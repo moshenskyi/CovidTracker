@@ -7,3 +7,4 @@ buildCache {
 		removeUnusedEntriesAfterDays = 30
 	}
 }
+include(":profile")

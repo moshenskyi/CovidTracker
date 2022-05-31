@@ -20,10 +20,11 @@ dependencies {
 
     // Extensions
     implementation(KotlinKtx.coreKtx)
-	implementation(project(mapOf("path" to ":core")))
 
 	// Test
     testImplementation(Tests.jUnit)
-    androidTestImplementation(Tests.jUnitExtensions)
-    androidTestImplementation(Tests.espresso)
+	androidTestImplementation(Tests.jUnitExtensions)
+	androidTestImplementation(Tests.espresso)
+
+	implementation(project( ":core"))
 }

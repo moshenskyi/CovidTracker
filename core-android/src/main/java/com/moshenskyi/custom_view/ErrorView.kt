@@ -1,4 +1,4 @@
-package com.moshenskyi
+package com.moshenskyi.custom_view
 
 import android.content.Context
 import android.util.AttributeSet

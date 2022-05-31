@@ -30,9 +30,8 @@ end
 lint_dir = "**/build/reports/*.xml"
 Dir[lint_dir].each do |file_name|
   android_lint.skip_gradle_task = true
-  android_lint.filtering = true
+  android_lint.filtering = false
   android_lint.report_file = file_name
-  android_lint.severity = "Error"
   android_lint.lint
 end
 
@@ -43,4 +42,17 @@ checkstyle_dir = "**/build/reports/ktlint/*.xml"
 Dir[checkstyle_dir].each do |file_name|
   checkstyle_format.base_path = file_name
   checkstyle_format.report file_name
+end
+
+###########################################
+#                 Detekt                  #
+###########################################
+
+kotlin_detekt.severity = "warning"
+kotlin_detekt.gradle_task = "detektVerification"
+detekt_files = "**/build/reports/detekt/*.xml"
+
+Dir[detekt_files].each do |file_name|
+  kotlin_detekt.report_file = file_name
+  kotlin_detekt.detekt
 end

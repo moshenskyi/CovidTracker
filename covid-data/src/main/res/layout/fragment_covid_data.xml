@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.moshenskyi.ErrorView
+    <com.moshenskyi.custom_view.ErrorView
         android:id="@+id/error_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

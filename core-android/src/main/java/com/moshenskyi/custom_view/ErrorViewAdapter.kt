@@ -1,4 +1,4 @@
-package com.moshenskyi
+package com.moshenskyi.custom_view
 
 import androidx.core.content.res.ResourcesCompat
 import com.moshenskyi.core.ConnectionError
